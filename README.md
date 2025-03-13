@@ -62,7 +62,6 @@ java Main summeryM 3
 ```
 
 ## Notes
-- If running on Mac/Linux, replace `;` with `:` in the classpath (-cp "*").
 - The `expenses.json` file is automatically created and used to store expenses.
 
 ## Future Enhancements
