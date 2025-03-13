@@ -27,5 +27,8 @@ public class Main {
         System.out.println("sum of expenses for month that's not there yet");
         expenseList.sumAllExpensesForMonth(5);
 
+        expenseList.deleteExpense(2);
+        expenseList.deleteExpense(1);
+        
     }
 }

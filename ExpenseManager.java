@@ -3,14 +3,20 @@ import java.util.ArrayList;
 public class ExpenseManager {
     
     public ArrayList<Expense> expenses;
+    public JsonManager jsonManager;
 
     public ExpenseManager () {
         this.expenses = new ArrayList<>();
+        this.jsonManager = new JsonManager();
     }
+
+
 
     public void addExpense (String description, int amount) {
         Expense expense = new Expense(description, amount);
         this.expenses.add(expense);
+
+        toJson();
     }
 
     public void deleteExpense (int id) {
@@ -22,12 +28,17 @@ public class ExpenseManager {
         }
         // decrement the globalId
         Expense.globalId -= 1;
+
+        toJson();
     }
 
     public void updateExpense (int id, String description, int amount) {
         expenses.get(id - 1).description = description;
         expenses.get(id - 1).amount = amount;
+
+        toJson();
     }
+
 
     public void listAllExpenses () {
         for (Expense expense : expenses) {
@@ -51,5 +62,9 @@ public class ExpenseManager {
             }
         }
         System.out.println("Total of expences of " + month + ": " + sum);
+    }
+
+    public void toJson () {
+        jsonManager.writeExpensesToJson(expenses);
     }
 }
