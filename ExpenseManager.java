@@ -12,7 +12,7 @@ public class ExpenseManager {
 
 
 
-    public void addExpense (String description, int amount) {
+    public void addExpense (String description, double amount) {
         Expense expense = new Expense(description, amount);
         this.expenses.add(expense);
 
@@ -32,7 +32,7 @@ public class ExpenseManager {
         toJson();
     }
 
-    public void updateExpense (int id, String description, int amount) {
+    public void updateExpense (int id, String description, double amount) {
         expenses.get(id - 1).description = description;
         expenses.get(id - 1).amount = amount;
 

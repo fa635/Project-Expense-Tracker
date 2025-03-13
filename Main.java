@@ -4,31 +4,35 @@ public class Main {
 
         ExpenseManager expenseList = new ExpenseManager();
 
-        expenseList.addExpense("lunch", 10);
-        expenseList.addExpense("dinner", 20);
-        expenseList.addExpense("units", 15);
-        expenseList.listAllExpenses();
+        switch (args[0]) {
+            case "add":
+                expenseList.addExpense(args[1], Double.valueOf(args[2]));
+                break;
+                
+            case "delete":
+                expenseList.deleteExpense(Integer.valueOf(args[1]));
+                break;
+                
+            case "update":
+                expenseList.updateExpense(Integer.valueOf(args[1]), args[2], Double.valueOf(args[3]));
+                break;
 
-        System.out.println("");
-        System.out.println("After delete id 2");
-        expenseList.deleteExpense(2);
-        expenseList.listAllExpenses();
-
-        System.out.println("");
-        System.out.println("After update id 1");
-        expenseList.updateExpense(1, "cacao", 130);
-        expenseList.listAllExpenses();
-
-        System.out.println("");
-        System.out.println("sum of expenses");
-        expenseList.sumAllExpenses();
-
-        System.out.println("");
-        System.out.println("sum of expenses for month that's not there yet");
-        expenseList.sumAllExpensesForMonth(5);
-
-        expenseList.deleteExpense(2);
-        expenseList.deleteExpense(1);
+            case "all":
+                expenseList.listAllExpenses();
+                break;
+              
+            case "summery":
+                expenseList.sumAllExpenses();
+                break;
+               
+            case "summeryM":
+                expenseList.sumAllExpensesForMonth(Integer.valueOf(args[1]));
+                break;
+               
+            default:
+                System.out.println("Usage: java Main <command>");
+                break;
+        }
         
     }
 }
